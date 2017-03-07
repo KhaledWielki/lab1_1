@@ -3,7 +3,7 @@ package pl.com.bottega.ecommerce.sales.domain.offer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Offer {
+public class Offer implements OfferInterface{
 	private List<OfferItem> availabeItems = new ArrayList<OfferItem>();
 	private List<OfferItem> unavailableItems = new ArrayList<OfferItem>();
 	
