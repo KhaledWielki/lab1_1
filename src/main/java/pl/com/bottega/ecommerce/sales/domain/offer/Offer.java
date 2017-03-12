@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Offer implements OfferInterface{
-	private List<OfferItem> availabeItems = new ArrayList<OfferItem>();
-	private List<OfferItem> unavailableItems = new ArrayList<OfferItem>();
+	private List<Product> availabeItems = new ArrayList<Product>();
+	private List<Product> unavailableItems = new ArrayList<Product>();
 	
 	
-	public Offer(List<OfferItem> availabeItems, List<OfferItem> unavailableItems) {
+	public Offer(List<Product> availabeItems, List<Product> unavailableItems) {
 		this.availabeItems = availabeItems;
 		this.unavailableItems = unavailableItems;
 	}
 
-	public List<OfferItem> getAvailabeItems() {
+	public List<Product> getAvailabeItems() {
 		return availabeItems;
 	}
 	
-	public List<OfferItem> getUnavailableItems() {
+	public List<Product> getUnavailableItems() {
 		return unavailableItems;
 	}
 
@@ -57,8 +57,8 @@ public class Offer implements OfferInterface{
 		if (! (availabeItems.size() == seenOffer.availabeItems.size()))
 			return false;
 		
-		for (OfferItem item : availabeItems) {
-			OfferItem sameItem = seenOffer.findItem(item.getProductId());
+		for (Product item : availabeItems) {
+			Product sameItem = seenOffer.findItem(item.getProductId());
 			if (sameItem == null)
 				return false;
 			if (!sameItem.sameAs(item, delta))
@@ -68,8 +68,8 @@ public class Offer implements OfferInterface{
 		return true;
 	}
 
-	private OfferItem findItem(String productId) {
-		for (OfferItem item : availabeItems){
+	private Product findItem(String productId) {
+		for (Product item : availabeItems){
 			if (item.getProductId().equals(productId))
 				return item;
 		}

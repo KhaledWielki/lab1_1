@@ -18,7 +18,7 @@ package pl.com.bottega.ecommerce.sales.domain.offer;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class OfferItem implements OfferInterface{
+public class Product implements OfferInterface{
 
 	// product
 	private String productId;
@@ -42,12 +42,12 @@ public class OfferItem implements OfferInterface{
 
 	private BigDecimal discount;
 
-	public OfferItem(String productId, BigDecimal productPrice, String productName,
+	public Product(String productId, BigDecimal productPrice, String productName,
 			Date productSnapshotDate, String productType, int quantity) {
 		this(productId, productPrice, productName, productSnapshotDate, productType, quantity, null, null);
 	}
 
-	public OfferItem(String productId, BigDecimal productPrice, String productName,
+	public Product(String productId, BigDecimal productPrice, String productName,
 			Date productSnapshotDate, String productType, int quantity,
 			BigDecimal discount, String discountCause) {
 		this.productId = productId;
@@ -126,14 +126,14 @@ public class OfferItem implements OfferInterface{
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean equals(Object product) {
+		if (this == product)
 			return true;
-		if (obj == null)
+		if (product == null)
 			return false;
-		if (getClass() != obj.getClass())
+		if (getClass() != product.getClass())
 			return false;
-		OfferItem other = (OfferItem) obj;
+		Product other = (Product) product;
 		if (discount == null) {
 			if (other.discount != null)
 				return false;
@@ -173,7 +173,7 @@ public class OfferItem implements OfferInterface{
 	 *            acceptable percentage difference
 	 * @return
 	 */
-	public boolean sameAs(OfferItem other, double delta) {
+	public boolean sameAs(Product other, double delta) {
 		if (productName == null) {
 			if (other.productName != null)
 				return false;
