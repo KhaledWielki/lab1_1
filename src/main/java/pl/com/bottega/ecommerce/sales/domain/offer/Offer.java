@@ -57,11 +57,11 @@ public class Offer implements OfferInterface{
 		if (! (availabeItems.size() == seenOffer.availabeItems.size()))
 			return false;
 		
-		for (Product item : availabeItems) {
-			Product sameItem = seenOffer.findItem(item.getProductId());
-			if (sameItem == null)
+		for (Product product : availabeItems) {
+			Product sameProduct = seenOffer.findItem(product.getProductData().getProductId());
+			if (sameProduct == null)
 				return false;
-			if (!sameItem.sameAs(item, delta))
+			if (!sameProduct.sameAs(product, delta))
 				return false;
 		}
 		
@@ -69,9 +69,9 @@ public class Offer implements OfferInterface{
 	}
 
 	private Product findItem(String productId) {
-		for (Product item : availabeItems){
-			if (item.getProductId().equals(productId))
-				return item;
+		for (Product product : availabeItems){
+			if (product.getProductData().getProductId().equals(productId))
+				return product;
 		}
 		return null;
 	}
